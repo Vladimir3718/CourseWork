@@ -5,6 +5,8 @@
 #include "conios.h"
 #include "add_tem.h"
 
+#include "checkfile.h"
+
 #define x 100
 #define y 20
 #define xh 70
@@ -16,6 +18,7 @@ int main()
     char enter;
     char nameFileFull[256], nameFile[256]; 
     char nameTheme[256], nameThemeWay[256];
+    char a[256];
 
     /*CREAT ADDTEST*/
     while(1){
@@ -113,6 +116,16 @@ int main()
             setTest(nameFileFull);
             break; //Creat
         case 2:
+            system("clear");
+            strcpy(a, "../Tests/Tests.txt");
+            if (Checkfile(a) == 1) {
+                printf("\nФайл не существует или изначально был пуст,");
+                printf(" пройдите в пункт меню для создания теста.\n");
+                printf("Для выхода в меню нажмите любую клавишу...\n");
+                getch();
+                break;
+            }
+
             break; //StartTest
         case 3:
             break; //HALP

@@ -11,7 +11,7 @@ build=build/
 build_t=build_t/
 bin=bin/
 
-OBJECTS=$(addprefix $(build), main.o conios.o add_tem.o)
+OBJECTS=$(addprefix $(build), main.o conios.o add_tem.o checkfile.o)
 OBJECTS_T=$(addprefix $(build_t), add_tem.o main_test.o)
 EXE=bin/main
 
@@ -34,6 +34,9 @@ $(build)conios.o: $(src)conios.c $(src)conios.h
 
 $(build)add_tem.o: $(src)add_tem.c $(src)add_tem.h
 	$(CC) $(CFLAGS) -c $(src)add_tem.c -o $@
+
+$(build)checkfile.o: $(src)checkfile.c $(src)checkfile.h
+	$(CC) $(CFLAGS) -c $(src)checkfile.c -o $@
 
 $(bin)main_test: $(OBJECTS_T)
 	$(CC) $(CFLAGS) $(OBJECTS_T) -o $@
