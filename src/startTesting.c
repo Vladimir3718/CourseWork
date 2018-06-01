@@ -181,4 +181,5 @@ int  startTesting(char *testName)
     fclose(file);
 
     return 0;
-}    
+	}
+}
