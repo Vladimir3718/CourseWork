@@ -11,7 +11,7 @@ build=build/
 build_t=build_t/
 bin=bin/
 
-OBJECTS=$(addprefix $(build), main.o conios.o add_tem.o checkfile.o select.o displaylist.o)
+OBJECTS=$(addprefix $(build), main.o conios.o add_tem.o checkfile.o select.o displaylist.o startTesting.o)
 OBJECTS_T=$(addprefix $(build_t), add_tem.o main_test.o checkfile.o select.o displaylist.o)
 EXE=bin/main
 
@@ -43,6 +43,9 @@ $(build)displaylist.o: $(src)displaylist.c $(src)displaylist.h
 
 $(build)checkfile.o: $(src)checkfile.c $(src)checkfile.h
 	$(CC) $(CFLAGS) -c $(src)checkfile.c -o $@
+
+$(build)startTesting.o: $(src)startTesting.c $(src)startTesting.h
+	$(CC) $(CFLAGS) -c $(src)startTesting.c -o $@	
 
 $(bin)main_test: $(OBJECTS_T)
 	$(CC) $(CFLAGS) $(OBJECTS_T) -o $@
