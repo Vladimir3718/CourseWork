@@ -1,0 +1,24 @@
+$1. Как клонировать репозиторий?
+!1) Никак
+2) git clone <>
+3) git klone <>
+4) git cloun <>
+^;#
+$2. Как просмотреть историю коммитов?
+!1) git history
+2) git log
+3) git story
+4) git hist
+^<>#
+$3. Как залить на сервер изменения?
+!1) git puch
+2) git push
+3) git commit
+4) git add
+^<#
+$4. Как переходить по коммитам?
+!1) git perehod
+2) git branch
+3) git checkout
+4) git push
+^=#

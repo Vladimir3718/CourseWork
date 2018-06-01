@@ -86,6 +86,6 @@ Tests:
 	touch Tests/Tests.txt
 	mkdir Results
 clean:
-	-rm -rf build build_t bin Tests Results
+	-rm -rf build build_t bin Results
 clear:
-	-rm -rf txt
+	-rm -rf txt Tests

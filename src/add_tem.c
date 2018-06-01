@@ -49,7 +49,7 @@ int setTest(char *nameFile)
     char quest[256], answer[256], try[12];//question answer number-correct
     char quit = 'u', enter_v = 'u', enter_o = 'u';//exits
     char otv_s = '!', try_s = '^', end_s = '#', end_len = '\n';//service chars
-    int k = 1, i = 1, j, n;        //Counters
+    int k = 1, i = 1, j = 0, n;        //Counters
 
     if (!(file = fopen(nameFile, "ab"))) {
         return 1;
@@ -91,6 +91,7 @@ int setTest(char *nameFile)
         } while (enter_o != 'y' && j < NUM);
         n = j;
 
+        k = 1;
         fwrite(&try_s, 1, 1, file);
         do {        //input true answers
 
