@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "select.h"
+#include "startTesting.h"
 #include "displaylist.h"
 #include "checkfile.h"
 
@@ -253,6 +254,51 @@ CTEST (Select_In_Empty_File, Correct_Check)
     strcpy(a,"testxt/testfile_empty.txt");
     int result = Select(a,tema,choice);
     int expected = 1;
+    ASSERT_EQUAL(expected, result);
+}
+//Maxim_Sladkiy
+CTEST (checkCorrect1, Right_File)
+{
+    char testName[256];
+    strcpy(testName, "testxt/checkCorrect1.txt");
+    int result=checkCorrect(testName);
+    int expected=0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (checkCorrect2, Absolutely_False_File)
+{
+    char testName[256];
+    strcpy(testName, "testxt/checkCorrect2.txt");
+    int result=checkCorrect(testName);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (checkCorrect3, False_File_With_One_Right_Symbol)
+{
+    char testName[256];
+    strcpy(testName, "testxt/checkCorrect3.txt");
+    int result=checkCorrect(testName);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (checkCorrect4, False_File_With_Two_Right_Symbol)
+{
+    char testName[256];
+    strcpy(testName, "testxt/checkCorrect4.txt");
+    int result=checkCorrect(testName);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (checkCorrect5, False_File_With_Three_Right_Symbol)
+{
+    char testName[256];
+    strcpy(testName, "testxt/checkCorrect5.txt");
+    int result=checkCorrect(testName);
+    int expected=1;
     ASSERT_EQUAL(expected, result);
 }
 
