@@ -1,1 +1,1 @@
-
+int  startTesting(char *);
