@@ -8,6 +8,7 @@
 #include "checkfile.h"
 #include "displaylist.h"
 #include "select.h"
+#include "info.h"
 
 #include "startTesting.h"
 
@@ -22,63 +23,71 @@ int main()
     char enter;
     char nameFileFull[256], nameFile[256]; 
     char nameTheme[256], nameThemeWay[256];
-    char tema[256], a[256];
+    char tema[256], a[256], info[256];
     int choice = 0;
 
     /*CREAT ADDTEST*/
-    while(1){
+    while (1) {
         /*HELP*/
 
         //Помощь
 
-        gotoxy(xh, yh+1);
+        gotoxy(xh, yh + 1);
         printf("Вверх:   'W'");
-        gotoxy(xh, yh+2);
+        gotoxy(xh, yh + 2);
         printf("Вниз:    'S'");
-        gotoxy(xh, yh+3);
+        gotoxy(xh, yh + 3);
         printf("Выбрать: 'E'");
 
         //Меню
-        gotoxy(x, y+1);
+        gotoxy(x, y + 1);
         printf("\x1b[1;36m");
         printf("Создать тест");
         printf("\x1b[0m");
-        gotoxy(x, y+2);
+        gotoxy(x, y + 2);
         printf("Пройти  тест");
-        gotoxy(x, y+3);
+        gotoxy(x, y + 3);
         printf("Помощь");
-        gotoxy(x, y+4);
+        gotoxy(x, y + 4);
         printf("Выйти");
 
         i = 1;
-        gotoxy(x+12, y+i);
-        enter=' ';
-        while (enter!='e') {
+        gotoxy(x + 12, y + i);
+        enter = ' ';
+        while (enter != 'e') {
             clrscr();
-            enter=getch();
+            enter = getch();
             /*HELP*/
-            gotoxy(xh, yh+1);
+            gotoxy(xh, yh + 1);
             printf("Вверх:   'W'");
-            gotoxy(xh, yh+2);
+            gotoxy(xh, yh + 2);
             printf("Вниз:    'S'");
-                gotoxy(xh, yh+3);
+                gotoxy(xh, yh + 3);
                 printf("Выбрать: 'E'");
             /*MENU*/
-            gotoxy(x, y+1);
+            gotoxy(x, y + 1);
             printf("Создать тест");
-            gotoxy(x, y+2);
+            gotoxy(x, y + 2);
             printf("Пройти  тест");
-            gotoxy(x, y+3);
+            gotoxy(x, y + 3);
             printf("Помощь");
-            gotoxy(x, y+4);
+            gotoxy(x, y + 4);
             printf("Выйти");
             /*CHECK*/
-            if (enter==119) i--;
-            if (enter==115) i++;
-            if (i<1) i=4;
-            if (i>4) i=1;
+            if (enter == 119) {
+                i--;
+            }
+            if (enter == 115) {
+                i++;
+            }
+            if (i < 1) {
+                i = 4;
+            }
+            if (i > 4) {
+                i = 1;
+            }
             /*SWITCH POINTER*/
-            gotoxy(x, y+i);
+            gotoxy(x, y + i);
             printf("\x1b[1;36m");
             switch (i) {
             case 1: printf("Создать тест"); break;
@@ -155,6 +164,13 @@ int main()
             getch();
             break; //StartTest
         case 3:
+            clrscr();
+            strcpy(info,"../info/info.txt");
+            if (Help(info) == 1) {
+                printf("Теперь вы безпомощны >:)");
+            }
+            printf("\n\nДля того чтобы вернутся в меню выбора, нажмите любую клавишу");
+            getch();
             break; //HALP
         case 4:
             clrscr();
