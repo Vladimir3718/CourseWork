@@ -1,2 +1,3 @@
 Тест по ТРПО&../txt/TRPO_TEST.txt
 Времена года&../txt/Test_year.txt
+TEMA&../txt/FILE.txt

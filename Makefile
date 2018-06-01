@@ -18,7 +18,7 @@ EXE=bin/main
 .PHONY: all clean test
 
 
-all: build build_t txt Tests bin $(EXE) test
+all: Tests Results build build_t txt bin $(EXE) test
 
 test: $(bin)main_test
 	$(bin)main_test
@@ -84,6 +84,7 @@ bin:
 Tests:
 	mkdir Tests
 	touch Tests/Tests.txt
+Results:
 	mkdir Results
 clean:
 	-rm -rf build build_t bin Results
