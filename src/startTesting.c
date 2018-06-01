@@ -144,6 +144,7 @@ int  startTesting(char *testName)
             } else {
                  quantityPoints = recordResult(answerMass, result, key);
                  key++;
+             }
         }
     }
     
@@ -181,5 +182,5 @@ int  startTesting(char *testName)
     fclose(file);
 
     return 0;
-	}
 }
+
