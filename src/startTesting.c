@@ -1,7 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int ANSWER_QUANTITY = 16;
+extern int ANSWER_QUANTITY;
+
+int checkCorrect(char *testName)
+{
+    FILE *file;
+    char cPtr;
+    int symbol1 = 0, symbol2 = 0, symbol3 = 0, symbol4 = 0;
+    file = fopen(testName, "rb");
+    
+    while (fread(&cPtr, 1, 1, file)) {
+        if (cPtr == '!') {
+            symbol1++;
+        }
+        if (cPtr == '#') {
+            symbol2++;
+        }
+        if (cPtr == '^') {
+            symbol3++;
+        }
+        if (cPtr == '$') {
+            symbol4++;
+        }
+    }
+    if (symbol1 >= 1 && symbol2 >= 1 && symbol3 >= 1 && symbol4 >= 1) {
+        return 0;
+    } else {
+         return 1;
+    }
+    fclose(file);
+}
 
 void askName(char *nameAndFamily)
 {
@@ -72,7 +101,8 @@ int  startTesting(char *testName)
     char nameAndFamily[128];
     int answerMass[ANSWER_QUANTITY], result[ANSWER_QUANTITY];
     int i;
-	int quantityPoints = 0;
+	int quantityPoints = 0, errorStatus = 0;
+	int key;
 
     for (i = 0; i < ANSWER_QUANTITY; i++) {
         answerMass[i] = 0;
@@ -82,7 +112,12 @@ int  startTesting(char *testName)
     if (!(file = fopen(testName, "rb"))) {
         fputs("ERROR\n", stdout);
     }
-
+	errorStatus = checkCorrect(testName);
+    if (errorStatus == 1) {
+        printf("ошибка"); 
+        return 1;
+    }
+    
 	askName(nameAndFamily);
 	
     fputs("Прохождение теста\n", stdout);
