@@ -5,6 +5,10 @@
 #include "conios.h"
 #include "add_tem.h"
 
+#include "checkfile.h"
+#include "displaylist.h"
+#include "select.h"
+
 #define x 100
 #define y 20
 #define xh 70
@@ -16,6 +20,8 @@ int main()
     char enter;
     char nameFileFull[256], nameFile[256]; 
     char nameTheme[256], nameThemeWay[256];
+    char tema[256], a[256];
+    int choice = 0;
 
     /*CREAT ADDTEST*/
     while(1){
@@ -113,6 +119,37 @@ int main()
             setTest(nameFileFull);
             break; //Creat
         case 2:
+            system("clear");
+            strcpy(a, "../Tests/Tests.txt");
+            if (Checkfile(a) == 1) {
+                printf("\nФайл не существует или изначально был пуст,");
+                printf(" пройдите в пункт меню для создания теста.\n");
+                printf("Для выхода в меню нажмите любую клавишу...\n");
+                getch();
+                break;
+            }
+
+            printf("Доступные для прохождения теста, темы:\n");
+            if (Displaylist(a) == 1) {
+                printf("\nФайл стал пуст в ходе отсеивания не существующих тем,");
+                printf(" пройдите в пункт меню для создания теста.\n");
+                printf("Для выхода в меню нажмите любую клавишу...\n");
+                getch();
+                break;
+            }
+            choice = 0;
+            while (!choice) {
+                printf("Введите номер темы для выбора - ");
+                scanf("%d",&choice);
+
+                if (Select(a,tema,choice) == 1) {
+                    printf("\nВы вышли за границу\n");
+                    choice = 0;
+                } else {
+                    break;
+                }
+            }
+
             break; //StartTest
         case 3:
             break; //HALP

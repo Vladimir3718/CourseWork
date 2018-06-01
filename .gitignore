@@ -1,0 +1,16 @@
+#Ignore
+
+#EXE
+bin
+
+#Objects
+build
+
+#Objects_test
+build_t
+
+#Resultaty
+Results
+
+#Test name
+Tests
