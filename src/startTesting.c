@@ -3,10 +3,20 @@
 
 int ANSWER_QUANTITY = 16;
 
+void askName(char *nameAndFamily)
+{
+    system("clear");
+    printf("Введите Имя и Фамилию: ");
+    __fpurge(stdin);
+    fgets(nameAndFamily, 128, stdin);
+    system("clear");
+}
+
 int  startTesting(char *testName)
 {
     FILE *file;
     char cPtr;
+    char nameAndFamily[128];
     int answerMass[ANSWER_QUANTITY];
     int i;
 
@@ -18,6 +28,8 @@ int  startTesting(char *testName)
         fputs("ERROR\n", stdout);
     }
 
+	askName(nameAndFamily);
+	
     fputs("Прохождение теста\n", stdout);
     while (fread(&cPtr, 1, 1, file)) {
 
