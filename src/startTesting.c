@@ -154,6 +154,27 @@ int  startTesting(char *testName)
     float pers = ((float)summ/quantityPoints)*100;
     printf("Ваш результат: ");
     printf("%sБаллы: %3d из %-3d -> %-.2f%%\n", nameAndFamily, summ, quantityPoints, pers);
+    getchar();
+
+    fclose(file);
+    char p = ' ', ps = 0x0a, ch[10], name[256], way[256];
+    int j;
+    for (i = 7, j = 0; i <= (strlen(testName)-5); i++, j++) {
+        name[j] = testName[i];
+    }
+    name[strlen(testName)-4] = '\0';
+    strcpy(way, "../Results/");
+    strcat(way, name);
+    strcat(way, "_result.txt");
+    sprintf(ch, "%5.2f", pers);
+    if (!(file = fopen(way, "ab"))) {
+        file = fopen(way, "wb");
+    }
+
+    fwrite(nameAndFamily, 1, strlen(nameAndFamily)-1, file);
+    fwrite(&p, 1, 1, file);
+    fwrite(ch, 1, strlen(ch), file);
+    fwrite(&ps, 1, 1, file);
     
     fclose(file);
 
