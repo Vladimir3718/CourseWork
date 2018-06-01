@@ -12,7 +12,7 @@ build_t=build_t/
 bin=bin/
 
 OBJECTS=$(addprefix $(build), main.o conios.o add_tem.o checkfile.o select.o displaylist.o)
-OBJECTS_T=$(addprefix $(build_t), add_tem.o main_test.o)
+OBJECTS_T=$(addprefix $(build_t), add_tem.o main_test.o checkfile.o select.o displaylist.o)
 EXE=bin/main
 
 .PHONY: all clean test
@@ -52,6 +52,15 @@ $(build_t)main_test.o: test/main.c thirdparty/ctest.h $(src)add_tem.h
 
 $(build_t)add_tem.o: $(src)add_tem.c $(src)add_tem.h
 	$(CC) $(CFLAGS) -c $(src)add_tem.c -o $@
+
+$(build_t)checkfile.o: $(src)checkfile.c $(src)checkfile.h
+	$(CC) $(CFLAGS) -c $(src)checkfile.c -o $@
+
+$(build_t)select.o: $(src)select.c $(src)select.h
+	$(CC) $(CFLAGS) -c $(src)select.c -o $@
+
+$(build_t)displaylist.o: $(src)displaylist.c $(src)displaylist.h
+	$(CC) $(CFLAGS) -c $(src)displaylist.c -o $@
 
 build:
 	mkdir build
