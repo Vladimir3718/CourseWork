@@ -3,6 +3,7 @@
 #include <stdio_ext.h>
 #include <string.h>
 #include "conios.h"
+#include "add_tem.h"
 
 #define x 100
 #define y 20
@@ -13,6 +14,8 @@ int main()
 {
     int i;
     char enter;
+    char nameFileFull[256], nameFile[256]; 
+    char nameTheme[256], nameThemeWay[256];
 
     /*CREAT ADDTEST*/
     while(1){
@@ -83,6 +86,31 @@ int main()
         gotoxy(0, 0);
         switch (i) {
         case 1:
+
+            system("clear");
+            fputs("Введите Имя файла: ", stdout);
+            scanf("%s", nameFile);
+
+            strcpy(nameFileFull, "../txt/");
+            strcat(nameFileFull, nameFile);
+            strcat(nameFileFull, ".txt");
+            strcpy(nameFile, nameFileFull);
+
+            if (setFile(nameFileFull)) {
+                break;
+            }
+
+            fputs("Введите Тему: ", stdout);
+            __fpurge(stdin);
+            fgets(nameTheme, 256, stdin);
+
+            strcpy(nameThemeWay, "../Tests/Tests.txt");
+
+            if (setTheme(nameTheme, nameFileFull, nameThemeWay)) {
+                break;
+            }
+
+            setTest(nameFileFull);
             break; //Creat
         case 2:
             break; //StartTest
