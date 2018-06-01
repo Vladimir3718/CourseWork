@@ -9,6 +9,8 @@
 #include "displaylist.h"
 #include "select.h"
 
+#include "startTesting.h"
+
 #define x 100
 #define y 20
 #define xh 70
@@ -149,7 +151,8 @@ int main()
                     break;
                 }
             }
-
+            startTesting(tema);
+            getch();
             break; //StartTest
         case 3:
             break; //HALP
